@@ -1,0 +1,48 @@
+{
+  "identifier" : "FairShift",
+  "products" : [
+    {
+      "displayPrice" : "59.99",
+      "familyShareable" : false,
+      "internalID" : "lifetime_001",
+      "localizations" : [
+        {
+          "description" : "One-time purchase, forever access",
+          "displayName" : "FairShift Pro Lifetime",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.zzoutuo.FairShift.pro.lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "subscriptionGroups" : [
+    {
+      "id" : "FairShift_Pro",
+      "localizations" : [],
+      "name" : "FairShift Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "displayPrice" : "3.99",
+          "displayPriceLocale" : "en_US",
+          "introductoryOffer" : null,
+          "productID" : "com.zzoutuo.FairShift.pro.monthly",
+          "recurringSubscriptionPeriod" : "P1M"
+        },
+        {
+          "adHocOffers" : [],
+          "displayPrice" : "24.99",
+          "displayPriceLocale" : "en_US",
+          "introductoryOffer" : null,
+          "productID" : "com.zzoutuo.FairShift.pro.yearly",
+          "recurringSubscriptionPeriod" : "P1Y"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}
