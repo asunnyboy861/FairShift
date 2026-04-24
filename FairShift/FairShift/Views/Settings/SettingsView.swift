@@ -89,11 +89,11 @@ struct SettingsView: View {
 
     private var aboutSection: some View {
         Section {
-            Link(destination: URL(string: "https://fairshift.app/privacy")!) {
+            Link(destination: URL(string: "https://asunnyboy861.github.io/FairShift/privacy.html")!) {
                 Label("Privacy Policy", systemImage: "hand.raised")
             }
 
-            Link(destination: URL(string: "https://fairshift.app/terms")!) {
+            Link(destination: URL(string: "https://asunnyboy861.github.io/FairShift/terms.html")!) {
                 Label("Terms of Use", systemImage: "doc.text")
             }
 

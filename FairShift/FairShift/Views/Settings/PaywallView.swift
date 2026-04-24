@@ -104,8 +104,8 @@ struct PaywallView: View {
                 .multilineTextAlignment(.center)
 
             HStack(spacing: 16) {
-                Link("Privacy Policy", destination: URL(string: "https://fairshift.app/privacy")!)
-                Link("Terms of Use", destination: URL(string: "https://fairshift.app/terms")!)
+                Link("Privacy Policy", destination: URL(string: "https://asunnyboy861.github.io/FairShift/privacy.html")!)
+                Link("Terms of Use", destination: URL(string: "https://asunnyboy861.github.io/FairShift/terms.html")!)
             }
             .font(.caption)
             .foregroundColor(.sageGreen)
