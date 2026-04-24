@@ -89,15 +89,19 @@ struct SettingsView: View {
 
     private var aboutSection: some View {
         Section {
-            Link(destination: URL(string: "https://asunnyboy861.github.io/FairShift/privacy.html")!) {
+            Link(destination: URL(string: "https://asunnyboy861.github.io/FairShift-privacy/")!) {
                 Label("Privacy Policy", systemImage: "hand.raised")
             }
 
-            Link(destination: URL(string: "https://asunnyboy861.github.io/FairShift/terms.html")!) {
+            Link(destination: URL(string: "https://asunnyboy861.github.io/FairShift-terms/")!) {
                 Label("Terms of Use", systemImage: "doc.text")
             }
 
-            Link(destination: URL(string: "mailto:support@fairshift.app")!) {
+            Link(destination: URL(string: "https://asunnyboy861.github.io/FairShift-support/")!) {
+                Label("Support", systemImage: "questionmark.circle")
+            }
+
+            Link(destination: URL(string: "mailto:iocompile67692@gmail.com")!) {
                 Label("Contact Support", systemImage: "envelope")
             }
 

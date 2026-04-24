@@ -9,19 +9,22 @@
 ## Policy Pages (GitHub Pages)
 
 ### Support Page
-- **URL**: https://asunnyboy861.github.io/FairShift/
-- **Source**: `/docs/index.html` in main repo
-- **Status**: ✅ Deployed via GitHub Pages
+- **Repo**: git@github.com:asunnyboy861/FairShift-support.git
+- **Repo URL**: https://github.com/asunnyboy861/FairShift-support
+- **GitHub Pages URL**: https://asunnyboy861.github.io/FairShift-support/
+- **Status**: Deployed
 
 ### Privacy Policy
-- **URL**: https://asunnyboy861.github.io/FairShift/privacy.html
-- **Source**: `/docs/privacy.html` in main repo
-- **Status**: ✅ Deployed via GitHub Pages
+- **Repo**: git@github.com:asunnyboy861/FairShift-privacy.git
+- **Repo URL**: https://github.com/asunnyboy861/FairShift-privacy
+- **GitHub Pages URL**: https://asunnyboy861.github.io/FairShift-privacy/
+- **Status**: Deployed
 
 ### Terms of Use
-- **URL**: https://asunnyboy861.github.io/FairShift/terms.html
-- **Source**: `/docs/terms.html` in main repo
-- **Status**: ✅ Deployed via GitHub Pages
+- **Repo**: git@github.com:asunnyboy861/FairShift-terms.git
+- **Repo URL**: https://github.com/asunnyboy861/FairShift-terms
+- **GitHub Pages URL**: https://asunnyboy861.github.io/FairShift-terms/
+- **Status**: Deployed
 
 ## Repository Structure
 
@@ -42,16 +45,12 @@ FairShift/
 │   │   └── Products.storekit    # StoreKit configuration
 │   ├── FairShiftTests/
 │   └── FairShiftUITests/
-├── docs/                         # GitHub Pages
-│   ├── index.html               # Support page
-│   ├── privacy.html             # Privacy policy
-│   └── terms.html               # Terms of use
 ├── screenshots/                  # App Store screenshots
 ├── us.md                         # English operation guide
 ├── capabilities.md              # Capabilities configuration
 ├── price.md                     # Pricing configuration
 ├── contact.md                   # Contact support info
-├── appstore.md                  # App Store metadata
+├── keytext.md                   # App Store metadata
 └── nowgit.md                    # This file
 ```
 
@@ -59,16 +58,16 @@ FairShift/
 
 ### Container ID
 - **Identifier**: `iCloud.com.zzoutuo.FairShift`
-- **Status**: ✅ Configured in entitlements
-- **Build Status**: ✅ Build succeeded
+- **Status**: Configured in entitlements
+- **Build Status**: Build succeeded
 
 ### Capabilities Enabled
 | Capability | Status |
 |------------|--------|
-| iCloud (CloudKit) | ✅ Enabled |
-| Push Notifications | ✅ Enabled |
-| Camera | ✅ Enabled |
-| Photo Library | ✅ Enabled |
+| iCloud (CloudKit) | Enabled |
+| Push Notifications | Enabled |
+| Camera | Enabled |
+| Photo Library | Enabled |
 
 ## App Store Connect Info
 
@@ -82,12 +81,11 @@ FairShift/
 ## Deployment Checklist
 
 - [x] Main app pushed to GitHub
-- [x] Privacy policy deployed
-- [x] Terms of use deployed
-- [x] Support page deployed
+- [x] Support page deployed to separate repo
+- [x] Privacy policy deployed to separate repo
+- [x] Terms of use deployed to separate repo
 - [x] iCloud container configured
 - [x] Build verified
-- [ ] GitHub Pages enabled (manual: Settings → Pages → Source: main /docs)
 - [ ] App Store Connect app created (manual)
 - [ ] Screenshots uploaded (manual)
 - [ ] Build archived and uploaded (manual)
