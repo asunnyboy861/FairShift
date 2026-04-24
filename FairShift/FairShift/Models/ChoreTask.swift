@@ -3,28 +3,28 @@ import SwiftData
 
 @Model
 final class ChoreTask {
-    @Attribute(.unique) var id: UUID
-    var title: String
-    var taskDescription: String
-    var categoryRaw: String
-    var effortWeightRaw: String
-    var ownershipTypeRaw: String
-    var frequencyRaw: String
-    var estimatedMinutes: Int
-    var mentalLoadScore: Int
-    var isInvisible: Bool
-    var createdAt: Date
+    var id: UUID = UUID()
+    var title: String = ""
+    var taskDescription: String = ""
+    var categoryRaw: String = ChoreCategory.kitchen.rawValue
+    var effortWeightRaw: String = EffortWeight.medium.rawValue
+    var ownershipTypeRaw: String = OwnershipType.fullOwnership.rawValue
+    var frequencyRaw: String = TaskFrequency.weekly.rawValue
+    var estimatedMinutes: Int = 15
+    var mentalLoadScore: Int = 3
+    var isInvisible: Bool = false
+    var createdAt: Date = Date()
     var lastCompletedAt: Date?
     var nextDueDate: Date?
     var fairPlayCardID: String?
-    var isFromCardDeck: Bool
+    var isFromCardDeck: Bool = false
 
     var conceptionOwner: Partner?
     var initiationOwner: Partner?
     var executionOwner: Partner?
 
     @Relationship(deleteRule: .cascade)
-    var completions: [TaskCompletion] = []
+    var completions: [TaskCompletion]?
 
     var category: ChoreCategory {
         get { ChoreCategory(rawValue: categoryRaw) ?? .kitchen }

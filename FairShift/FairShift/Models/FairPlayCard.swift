@@ -3,15 +3,15 @@ import SwiftData
 
 @Model
 final class FairPlayCard {
-    @Attribute(.unique) var id: UUID
-    var cardID: String
-    var title: String
-    var cardDescription: String
-    var categoryRaw: String
-    var isMinimumStandard: Bool
-    var estimatedMinutesPerWeek: Int
-    var mentalLoadLevel: Int
-    var isDealt: Bool
+    var id: UUID = UUID()
+    var cardID: String = ""
+    var title: String = ""
+    var cardDescription: String = ""
+    var categoryRaw: String = ChoreCategory.kitchen.rawValue
+    var isMinimumStandard: Bool = false
+    var estimatedMinutesPerWeek: Int = 15
+    var mentalLoadLevel: Int = 5
+    var isDealt: Bool = false
     var assignedPartnerID: UUID?
 
     var category: ChoreCategory {

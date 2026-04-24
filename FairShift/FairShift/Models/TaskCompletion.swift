@@ -3,13 +3,13 @@ import SwiftData
 
 @Model
 final class TaskCompletion {
-    @Attribute(.unique) var id: UUID
-    var completedAt: Date
-    var minutesSpent: Int
-    var notes: String
+    var id: UUID = UUID()
+    var completedAt: Date = Date()
+    var minutesSpent: Int = 15
+    var notes: String = ""
     var photoData: Data?
-    var wasInvisible: Bool
-    var partnerID: UUID
+    var wasInvisible: Bool = false
+    var partnerID: UUID = UUID()
 
     var choreTask: ChoreTask?
 
