@@ -7,55 +7,7 @@
 | Notifications | ✅ Success | Auto | None |
 | Camera | ✅ Success | Auto | None |
 | Photo Library | ✅ Success | Auto | None |
-| iCloud/CloudKit | ❌ Failed | - | **See "Manual Configuration" section below** |
-
----
-
-## ⚠️ ACTION REQUIRED - Manual Configuration (Check First!)
-
-### Manual Configuration Required
-
-#### 1. iCloud (CloudKit)
-**Status**: ❌ Auto-configuration failed — Requires manual setup
-**Why needed**: Partner real-time sync via CloudKit CKShare
-**Why auto-config failed**: Container ID required, must be created in Apple Developer Portal first
-
-**Manual Configuration Steps**:
-
-**Step 1: Apple Developer Portal**
-1. Go to https://developer.apple.com/account/resources/identifiers/list
-2. Select your App ID (com.zzoutuo.FairShift)
-3. Enable iCloud capability
-4. Create CloudKit container: `iCloud.com.zzoutuo.FairShift`
-
-**Step 2: Xcode Configuration**
-1. Select project in Navigator → Select target → Signing & Capabilities
-2. Click "+ Capability"
-3. Select "iCloud"
-4. Check "CloudKit"
-5. Add container: `iCloud.com.zzoutuo.FairShift`
-
-**Step 3: Entitlements**
-Add to `.entitlements` file:
-```xml
-<key>com.apple.developer.icloud-container-identifiers</key>
-<array>
-    <string>iCloud.com.zzoutuo.FairShift</string>
-</array>
-<key>com.apple.developer.ubiquity-container-identifiers</key>
-<array>
-    <string>iCloud.com.zzoutuo.FairShift</string>
-</array>
-<key>com.apple.developer.icloud-container-development-container-identifiers</key>
-<array>
-    <string>iCloud.com.zzoutuo.FairShift</string>
-</array>
-```
-
-**Step 4: Verify**
-1. Build project (Cmd+B)
-2. Check for errors
-3. If successful: Update this doc with ✅
+| iCloud/CloudKit | ✅ Success | Manual | None |
 
 ---
 
@@ -79,14 +31,103 @@ Add to `.entitlements` file:
 - **Build Settings**: INFOPLIST_KEY_NSCameraUsageDescription added
 - **Verification**: Build succeeded
 
+### 4. iCloud/CloudKit
+**Status**: ✅ Successfully configured
+**Configuration Details**:
+- **Container ID**: `iCloud.com.zzoutuo.FairShift`
+- **Entitlements File**: `FairShift/FairShift.entitlements`
+- **Configuration**:
+  ```xml
+  <key>com.apple.developer.icloud-container-identifiers</key>
+  <array>
+      <string>iCloud.com.zzoutuo.FairShift</string>
+  </array>
+  <key>com.apple.developer.icloud-services</key>
+  <array>
+      <string>CloudKit</string>
+  </array>
+  ```
+- **Verification**: Build succeeded ✅
+
+---
+
+## iCloud Implementation in Code
+
+### SwiftData + CloudKit Configuration
+
+The app uses SwiftData with optional CloudKit sync for partner data sharing:
+
+```swift
+// FairShiftApp.swift
+@main
+struct FairShiftApp: App {
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Partner.self,
+            ChoreTask.self,
+            TaskCompletion.self,
+            FairPlayCard.self,
+        ])
+        
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .automatic
+        )
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(sharedModelContainer)
+    }
+}
+```
+
+### Settings Toggle for iCloud Sync
+
+Users can enable/disable iCloud sync in Settings:
+
+```swift
+// SettingsView.swift
+Section("Sync & Backup") {
+    Toggle("Enable iCloud Sync", isOn: $viewModel.useCloudKit)
+        .onChange(of: viewModel.useCloudKit) { newValue in
+            if newValue {
+                viewModel.checkCloudKitAvailability()
+            }
+        }
+    
+    if viewModel.useCloudKit {
+        Text("Your data will sync across all your devices")
+            .font(.caption)
+            .foregroundColor(.secondary)
+    } else {
+        Text("Data is stored locally on this device")
+            .font(.caption)
+            .foregroundColor(.secondary)
+    }
+}
+```
+
 ---
 
 ## Summary Checklist
 
-### Manual Configuration (To Do) - PRIORITY
-- [ ] iCloud/CloudKit manually configured (see "Manual Configuration" section at top)
-
-### Auto-Configured (Verified)
+### All Capabilities Configured ✅
 - [x] Notifications verified working
 - [x] Camera verified working
 - [x] Photo Library verified working
+- [x] iCloud/CloudKit configured and build verified
+
+### Build Verification
+- [x] Clean build succeeded
+- [x] iCloud entitlements validated
+- [x] No provisioning profile errors
